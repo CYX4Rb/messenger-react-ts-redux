@@ -1,0 +1,12 @@
+.app {
+  display: flex;
+  height: 100vh;
+
+  &__dialogs {
+    width: 30%;
+    border-right: 1px solid gray;
+  }
+  &__messages {
+    width: 70%;
+  }
+}

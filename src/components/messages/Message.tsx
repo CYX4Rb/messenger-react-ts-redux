@@ -1,0 +1,31 @@
+import { Comment, Tooltip, Avatar } from 'antd';
+import moment from 'moment';
+
+const Message: React.FC = () => {
+  return (
+    <Comment
+      className='message'
+      author={<p>Han Solo</p>}
+      avatar={
+        <Avatar
+          src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+          alt="Han Solo"
+        />
+      }
+      content={
+        <p>
+          We supply a series of design principles, practical patterns and high quality design
+          resources (Sketch and Axure), to help people create their product prototypes beautifully
+          and efficiently.
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae suscipit odit, fuga dolore dolores harum tenetur molestias eaque, quasi sit provident nostrum dolor, minima cupiditate corrupti fugit id rerum consectetur.
+        </p>
+      }
+      datetime={
+        <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
+          <span>{moment().fromNow()}</span>
+        </Tooltip>
+      }
+    />
+  );
+};
+export default Message

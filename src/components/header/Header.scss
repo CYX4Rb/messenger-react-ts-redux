@@ -1,0 +1,12 @@
+.header {
+    .ant-card {
+        display: flex;
+        justify-content: space-between;
+        border-radius: unset;
+        border: unset;
+        border-bottom: 1px solid gray;
+    }
+    .ant-card-body {
+        padding: 10px;
+    }
+}

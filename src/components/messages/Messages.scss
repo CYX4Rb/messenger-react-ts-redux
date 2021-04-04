@@ -1,0 +1,15 @@
+.messages {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    &__content {
+        overflow: auto;
+        .ant-comment {
+            padding: 0px 20px;
+        }
+    }
+    &__input {
+        border-top: 1px solid gray;
+        padding: 5px 5px;
+    }
+}
