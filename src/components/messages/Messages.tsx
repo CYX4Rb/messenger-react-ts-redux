@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 
 const Messages: React.FC<ReturnType<typeof MapStateToProps>> = ({randomMessages}) => {
     const onSend= (value: string) => console.log(value) 
+    
     return (
         <div className='messages'>
             <Header name={'Work'} status={'Здесь только по работе'} photo={'null'} type={'chat'}/>

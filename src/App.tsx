@@ -3,7 +3,7 @@ import "antd/dist/antd.css";
 import Messages from './components/messages/Messages';
 import Dialogs from './components/dialogs/Dialogs';
 
-function App(props: any) {
+function App() {
   return (
     <div className='app'>
       <div className='app__dialogs'>

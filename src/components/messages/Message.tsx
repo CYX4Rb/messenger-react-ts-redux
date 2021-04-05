@@ -1,5 +1,4 @@
 import { Comment, Tooltip, Avatar } from 'antd';
-import moment from 'moment';
 import { MessageType } from '../../Redux/Messages';
 
 type IMessagePropsType = {
