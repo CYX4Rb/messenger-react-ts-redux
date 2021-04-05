@@ -1,7 +1,11 @@
 import { Comment, Tooltip, Avatar } from 'antd';
 import moment from 'moment';
+import { MessageType } from '../../Redux/Messages';
 
-const Message: React.FC = () => {
+type IMessagePropsType = {
+  message: MessageType
+}
+const Message: React.FC<IMessagePropsType> = ({message}) => {
   return (
     <Comment
       className='message'
@@ -14,15 +18,12 @@ const Message: React.FC = () => {
       }
       content={
         <p>
-          We supply a series of design principles, practical patterns and high quality design
-          resources (Sketch and Axure), to help people create their product prototypes beautifully
-          and efficiently.
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae suscipit odit, fuga dolore dolores harum tenetur molestias eaque, quasi sit provident nostrum dolor, minima cupiditate corrupti fugit id rerum consectetur.
+          {message.text}
         </p>
       }
       datetime={
-        <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
-          <span>{moment().fromNow()}</span>
+        <Tooltip title={'2021-03-23 16:53:12'}> 
+          <span>{'16:53:12'}</span>
         </Tooltip>
       }
     />

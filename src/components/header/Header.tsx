@@ -5,24 +5,25 @@ import { EllipsisOutlined } from '@ant-design/icons'
 import './Header.scss'
 
 type IHeaderProps = {
-    title: string,
-    description: string,
+    name: string
+    status: string
+    photo: string
     type: 'user' | 'chat',
 }
 
-const Header: React.FC<IHeaderProps> = ({title, description, type}) => {
+const Header: React.FC<IHeaderProps> = ({name, status, photo, type}) => {
     return (
         <div className='header'>
             <Card
-                style={{ backgroundColor:  type === 'user' ? '#001529' : '#00335a' }}
+                style={{ backgroundColor:  type === 'user' ? '#001529' : '#00335a' }} 
                 actions={[
                     <EllipsisOutlined key="ellipsis" />,
                 ]}
             >
                 <Meta
-                    avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                    title={title}
-                    description={description}
+                    avatar={<Avatar src={photo} />}
+                    title={name}
+                    description={status}
                 />
             </Card>
         </div>

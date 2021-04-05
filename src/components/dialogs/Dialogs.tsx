@@ -5,22 +5,31 @@ import React from 'react'
 import Header from '../header/Header'
 import './Dialogs.scss'
 import Avatar from 'antd/lib/avatar/avatar'
+import { connect } from 'react-redux'
+import { AppStateType } from '../../Redux/store'
 
-const Dialogs: React.FC = () => {
+
+const Dialogs: React.FC<ReturnType<typeof MapStateToProps>> = ({me, users}) => {
     return <Layout className='dialogs'>
-        <Header title={'Elon Mask'} description={'i m king!!!!'} type={'user'} />
+        <Header
+            name={me.firstName + ' ' + me.lastName}
+            status={me.status}
+            photo={me.photo}
+            type={'user'}
+        />
         <Menu mode="inline" defaultOpenKeys={['direct', 'group']} theme='dark'>
             <Menu.SubMenu key="group" title="Group Dialogs" icon={<TeamOutlined />}>
                 <Menu.Item icon={<HeartOutlined />}>Random</Menu.Item>
                 <Menu.Item icon={<BulbOutlined />}>Work</Menu.Item>
             </Menu.SubMenu>
             <Menu.SubMenu title="Direct dialogs" key='direct' icon={<UserOutlined />}>
-                <Menu.Item icon={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}>Tom</Menu.Item>
-                <Menu.Item icon={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}>Bill</Menu.Item>
-                <Menu.Item icon={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}>Alex</Menu.Item>
+                {users.map(user => <Menu.Item key={user.id} icon={<Avatar src={user.photo} />}>{user.firstName + ' ' + user.lastName}</Menu.Item>)}
             </Menu.SubMenu>
         </Menu>
     </Layout>
 }
-
-export default Dialogs
+const MapStateToProps = (state: AppStateType) => ({
+    me: state.users.me,
+    users: state.users.users
+})
+export default connect(MapStateToProps)(Dialogs)

@@ -5,20 +5,16 @@ import Header from '../header/Header';
 import { SendOutlined } from '@ant-design/icons'
 import Message from './Message';
 import './Messages.scss'
-const Messages = () => {
+import { AppStateType } from '../../Redux/store';
+import { connect } from 'react-redux';
+
+const Messages: React.FC<ReturnType<typeof MapStateToProps>> = ({randomMessages}) => {
     const onSend= (value: string) => console.log(value) 
     return (
         <div className='messages'>
-            <Header title={'Work'} description={'We working'} type={'chat'}/>
+            <Header name={'Work'} status={'Здесь только по работе'} photo={'null'} type={'chat'}/>
             <Content className='messages__content'>
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
-                <Message />
+                {randomMessages.map(message => <Message key={message.id} message={message} /> )}
             </Content>
             <div className='messages__input'>
                 <Input.Search onSearch={onSend} placeholder='enter your message' enterButton={<SendOutlined />}></Input.Search>
@@ -27,5 +23,8 @@ const Messages = () => {
     )
 }
 
+const MapStateToProps = (state: AppStateType) => ({
+    randomMessages : state.messages.RandomMessages
+})
 
-export default Messages
+export default connect(MapStateToProps)(Messages)
