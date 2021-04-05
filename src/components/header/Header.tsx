@@ -6,14 +6,15 @@ import './Header.scss'
 
 type IHeaderProps = {
     title: string,
-    description: string
+    description: string,
+    type: 'user' | 'chat',
 }
 
-const Header: React.FC<IHeaderProps> = ({title, description}) => {
+const Header: React.FC<IHeaderProps> = ({title, description, type}) => {
     return (
         <div className='header'>
             <Card
-                style={{ width: '100%' }}
+                style={{ backgroundColor:  type === 'user' ? '#001529' : '#00335a' }}
                 actions={[
                     <EllipsisOutlined key="ellipsis" />,
                 ]}

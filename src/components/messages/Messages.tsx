@@ -9,7 +9,7 @@ const Messages = () => {
     const onSend= (value: string) => console.log(value) 
     return (
         <div className='messages'>
-            <Header title={'Work'} description={'We working'} />
+            <Header title={'Work'} description={'We working'} type={'chat'}/>
             <Content className='messages__content'>
                 <Message />
                 <Message />

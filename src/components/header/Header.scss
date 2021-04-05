@@ -1,12 +1,24 @@
-.header {
+.header { 
     .ant-card {
         display: flex;
         justify-content: space-between;
         border-radius: unset;
         border: unset;
-        border-bottom: 1px solid gray;
+        padding-bottom: 20px;
+        border-bottom: 1px solid;
     }
     .ant-card-body {
         padding: 10px;
     }
+    .ant-card-actions {
+        background: transparent;
+        border-top: unset;
+    }
+    .ant-card-meta-title, .ant-card-meta-description {
+        color: white;
+    }
+}
+
+.ant-card-actions > li > span a:not(.ant-btn), .ant-card-actions > li > span > .anticon {
+    color: white;
 }
