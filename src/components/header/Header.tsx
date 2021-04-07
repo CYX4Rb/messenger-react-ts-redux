@@ -9,6 +9,7 @@ type IHeaderProps = {
     status: string
     photo: string
     type: 'user' | 'chat',
+    chatType?: 'direct' | 'group'
 }
 
 const Header: React.FC<IHeaderProps> = ({name, status, photo, type}) => {

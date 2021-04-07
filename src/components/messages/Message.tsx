@@ -1,18 +1,20 @@
-import { Comment, Tooltip, Avatar } from 'antd';
-import { MessageType } from '../../Redux/Messages';
+import { Comment, Tooltip, Avatar, Typography } from 'antd';
+import { MessageType } from '../../Redux/ChatReducer';
+import { User } from '../../Redux/UsersReducer';
 
 type IMessagePropsType = {
   message: MessageType
+  sender: User | undefined
 }
-const Message: React.FC<IMessagePropsType> = ({message}) => {
+const Message: React.FC<IMessagePropsType> = ({message, sender}) => {
   return (
     <Comment
       className='message'
-      author={<p>Han Solo</p>}
+      author={<Typography.Text strong>{sender?.firstName} {sender?.lastName}</Typography.Text>}
       avatar={
         <Avatar
-          src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-          alt="Han Solo"
+          src={sender?.photo}
+          alt="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
         />
       }
       content={
@@ -21,8 +23,8 @@ const Message: React.FC<IMessagePropsType> = ({message}) => {
         </p>
       }
       datetime={
-        <Tooltip title={'2021-03-23 16:53:12'}> 
-          <span>{'16:53:12'}</span>
+        <Tooltip title={message.timeSending}> 
+          <span>{message.timeSending.slice(11,16)}</span>
         </Tooltip>
       }
     />
